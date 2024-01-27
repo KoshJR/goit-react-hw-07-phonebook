@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../redux/contacts/contactsSlice';
+import { getFilterValue} from '../../redux/contacts/contactsSlice';
 import css from './Filter.module.css';
+import { selectStatusFilter } from '../../redux/selectors';
 
 
 
 export const Filter = () => {
- const filter = useSelector(store => store.contactsFactory.filer)
+ const filter = useSelector(selectStatusFilter)
  const dispatch = useDispatch()
 
  const handleChange = event => {
-  const action = setFilter(event.target.value)
-  dispatch(action)
+  dispatch(getFilterValue(event.target.value))
 };
 
   return (
